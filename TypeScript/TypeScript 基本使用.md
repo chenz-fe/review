@@ -48,7 +48,7 @@ list = [1, true, "free"];
 list[1] = 100;
 //函数中使用类型
 function greeting(person: string): string {
-return 'Hello, ' + person;
+	return 'Hello, ' + person;
 }
 //void类型，常用于没有返回值的函数
 function warnUser(): void { alert("This is my warning message"); }
@@ -112,15 +112,22 @@ ts中的类和es6中大体相同，这里重点关注ts带来的特性
 
 ```js
 class MyComp {
-  private _foo: string; // 私有属性，不能在类的外部访问
-  protected bar: string;// 保护属性，可以在子类中访问
+  private _foo: string // 私有属性，不能在类的外部访问
+  protected bar: string // 保护属性，可以在子类中访问
   // 构造函数参数加修饰符，能够定义为成员属性
-  constructor(public tua = "tua") {}
+  constructor(public tua = 'tua', fooVal: string, barVal: string) {
+    this._foo = fooVal
+    this.bar = barVal
+  }
   // 方法也有修饰符
-  private someMethod() {}
+  private someMethod() { return '' }
   // 存取器：属性方式访问，可添加额外逻辑，控制读写性
-  get foo() { return this._foo }
-  set foo(val) { this._foo = val }
+  get foo() {
+    return this._foo
+  }
+  set foo(val) {
+    this._foo = val
+  }
 }
 ```
 
@@ -226,7 +233,7 @@ onRouteChange(val:string, oldVal:any){
 
 vuex-class 为vue-class-component提供Vuex状态绑定帮助方法。
 
-安装依赖
+s安装依赖
 
 ```bash
 npm i vuex-class -S
@@ -269,11 +276,11 @@ export default class Feature extends Vue {
   @Action addFeatureAction: any;
   @Mutation addFeatureMutation: any;
   private addFeature(event) {
-  console.log(event);
-  // this.features.push(event.target.value);
-  this.addFeatureAction(event.target.value);
-  // this.addFeaturMutation(event.target.value);
-  event.target.value = "";
+  	console.log(event);
+  	// this.features.push(event.target.value);
+  	this.addFeatureAction(event.target.value);
+  	// this.addFeaturMutation(event.target.value);
+  	event.target.value = "";
   }
 }
 ```
@@ -283,7 +290,7 @@ export default class Feature extends Vue {
 类装饰器
 
 ```js
-//类装饰器表达式会在运行时当作函数被调用，类的构造函数作为其唯一的参数。
+// 类装饰器表达式会在运行时当作函数被调用，类的构造函数作为其唯一的参数。
 function log(target: Function) {
 	// target是构造函数
   console.log(target === Foo); // true
@@ -345,7 +352,7 @@ function mua(param:string) {
 }
 ```
 
-实战一下Component，新建Decor.vue
+简单实现一下Component，新建Decor.vue
 
 ```js
 <template>
@@ -370,10 +377,3 @@ export default class Decor extends Vue {}
 </script>
 ```
 
-显然options中的选项都可以从Decor定义中找到，去源码中找答案吧
-
-
-
-作业
-1. 把手头的小项目改造为ts编写
-2. 探究vue-property-decorator中各装饰器实现原理，能造个轮子更佳

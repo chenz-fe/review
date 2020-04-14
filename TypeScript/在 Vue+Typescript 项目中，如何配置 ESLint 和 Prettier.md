@@ -19,24 +19,25 @@
 vue create vue-ts
 ```
 
-<img src="/Users/zengchen/Desktop/2020/review/TS/assets/image-20200410153055024.png" alt="image-20200410153055024" style="width: 50%;" />
+<img src="/Users/zengchen/Desktop/2020/review/TypeScript/assets/image-20200410153055024.png" alt="image-20200410153055024" style="width: 50%;" />
 
-<img src="/Users/zengchen/Desktop/2020/review/TS/assets/image-20200410153156764.png" alt="image-20200410153156764" style="width:50%;" />
+<img src="/Users/zengchen/Desktop/2020/review/TypeScript/assets/image-20200410153156764.png" alt="image-20200410153156764" style="width:50%;" />
 
-<img src="/Users/zengchen/Desktop/2020/review/TS/assets/image-20200410153304860.png" alt="image-20200410153304860" style="width:50%;" />
+<img src="/Users/zengchen/Desktop/2020/review/TypeScript/assets/image-20200410153304860.png" alt="image-20200410153304860" style="width:50%;" />
 
 注意这里需要勾选 ESLint + Prettier，我试过勾选 TSLint，但是发现 TSLint 无法实现代码自动格式化，只能提供很多很多的警告信息。
 
 后面要选择 Lint on save 和 In decicated config files
 
-<img src="/Users/zengchen/Desktop/2020/review/TS/assets/image-20200410153817662.png" alt="image-20200410153817662" style="width:50%;" />
+<img src="/Users/zengchen/Desktop/2020/review/TypeScript/assets/image-20200410153817662.png" alt="image-20200410153817662" style="width:50%;" />
 
 ### 修改.eslintrc.js
 
-规则可以自己配置，我主要修改了extends，将`@vue/prettier`位置提前了
+规则可以自己配置，我主要修改了extends：
 
-- `@typescript-eslint/parser`：`ESLint`的解析器，用于解析`TypeScript`，从而检查和规范`TypeScript`代码
-- `@vue/prettier/@typescript-eslint`：使得@typescript-eslint中的样式规范失效，遵循prettier中的样式规范
+- `@typescript-eslint/parser`：`ESLint`的解析器，用于解析`TypeScript`，从而检查和规范`TypeScript`代码。
+- `@vue/prettier/@typescript-eslint`：使得@typescript-eslint中的样式规范失效，遵循prettier中的样式规范，需要放在最后一项。
+- `extends`：代表你启动哪些lint选项，如果多个规则直接有冲突的话，extends后面的选项会覆盖前面的。
 
 ```js
 module.exports = {
